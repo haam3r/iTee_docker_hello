@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt-get install python -y
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SYSDDIR="/usr/local/lib/systemd/system"
 CHECKS=$(ls $DIR/checks)
@@ -28,3 +30,7 @@ EOF
     systemctl start $CHK
 
 done
+
+cd /root/iTee_docker_hello/web/
+
+python -m SimpleHTTPServer
