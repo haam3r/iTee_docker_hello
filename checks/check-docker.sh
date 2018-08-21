@@ -17,13 +17,14 @@ then
     if [ $installed_version = $candidate_version ]
     then
         true
+        sed -i "s/check1.*$/check1: True/" ../web/index.html
     else
         echo "Installed does not equal candidate version"
-        false
+        sed -i "s/check1.*$/check1: False/" ../web/index.html
     fi
 else
     echo "Docker is not installed from correct repository"
-    false
+    sed -i "s/check1.*$/check1: False/" ../web/index.html
 fi
 
 
