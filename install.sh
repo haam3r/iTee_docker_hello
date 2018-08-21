@@ -8,23 +8,23 @@ if [ ! -d $SYSDDIR ]; then
 fi
 
 for CHK in $CHECKS ; do
-    
-    cat > $SYSDDIR/$CHK.service <<-EOF
-    [Unit]
-    After=network.target
 
-    [Service]
-    WorkingDirectory=$DIR/checks/
-    ExecStart=/bin/bash $DIR/checks/$CHK
-    Restart=on-failure
-    RestartSec=3
+cat > $SYSDDIR/$CHK.service <<EOF
+[Unit]
+After=network.target
 
-    [Install]
-    WantedBy=multi-user.target
-    EOF
-    
+[Service]
+WorkingDirectory=$DIR/checks/
+ExecStart=/bin/bash $DIR/checks/$CHK
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
     systemctl daemon-reload
     systemctl enable $CHK
     systemctl start $CHK
-    
+
 done
